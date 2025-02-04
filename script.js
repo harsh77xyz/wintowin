@@ -43,12 +43,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (clearedPixels > totalPixels * 0.5) {
             canvas.style.display = "none";
-            prizeBox.classList.remove("hidden");
-            downloadBtn.style.display = "block";
+            prizeBox.classList.remove("hidden");  // Prize box dikhane ke liye
+            downloadBtn.style.display = "block";  // Download button dikhane ke liye
 
             // Redirect after 2 seconds
             setTimeout(() => {
-                window.location.href = "https://rushbyhike.app.link/SxtZ7wQEwQb"; //
+                window.location.href = "https://rushbyhike.app.link/SxtZ7wQEwQb"; // 
             }, 2000);
         }
     }

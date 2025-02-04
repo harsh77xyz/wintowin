@@ -3,31 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scratch to Reveal</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.rawgit.com/websanova/wScratchPad/master/wScratchPad.min.js"></script>
-    <style>
-        body { text-align: center; font-family: Arial, sans-serif; }
-        #scratch { width: 300px; height: 150px; background: grey; margin: auto; }
-    </style>
+    <title>Scratch & Win</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>Scratch to Unlock!</h2>
-    <div id="scratch"></div>
-    
-    <script>
-        $(document).ready(function(){
-            $("#scratch").wScratchPad({
-                size: 30, // Brush size
-                bg: "#FFF", // Background color
-                fg: "#888", // Scratch surface color
-                scratchMove: function (e, percent) {
-                    if (percent > 50) { 
-                        window.location.href = "https://rushbyhike.app.link/SxtZ7wQEwQb"; // 
-                    }
-                }
-            });
-        });
-    </script>
+
+    <div class="container">
+        <h1 class="logo">Reward-box <span>💰</span></h1>
+        <h2 class="scratch-title">Scratch & Win</h2>
+        <p class="subtext">Scratch & Get Your Prize</p>
+
+        <div class="scratch-card">
+            <canvas id="scratchCanvas"></canvas>
+            <div class="prize">
+                <p>Install & Claim</p>
+                <h2>₹ 10,000*</h2>
+                <p class="bonus-text">Big Bonus</p>
+                <p class="partners">Payment Partners: <span class="verified">✔ Verified</span></p>
+            </div>
+        </div>
+
+        <button id="downloadBtn">DOWNLOAD NOW</button>
+        <p class="surprise-text">🎁 Scratch for a surprise!</p>
+        <p class="tickets-left">Only <span>10</span> Tickets Left</p>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
+

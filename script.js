@@ -5,8 +5,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const downloadBtn = document.getElementById("downloadBtn");
 
     function setupCanvas() {
-        canvas.width = canvas.parentElement.clientWidth;
-        canvas.height = canvas.parentElement.clientHeight;
+        let parent = canvas.parentElement;
+        canvas.width = parent.clientWidth;  
+        canvas.height = parent.clientHeight;  // Height ko parent ke according set karein
         ctx.fillStyle = "gray";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
@@ -24,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         ctx.globalCompositeOperation = "destination-out";
         ctx.beginPath();
-        ctx.arc(x, y, 20, 0, Math.PI * 2);
+        ctx.arc(x, y, 30, 0, Math.PI * 2); // Scratch size bada kiya
         ctx.fill();
 
         checkScratch();
@@ -43,12 +44,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (clearedPixels > totalPixels * 0.5) {
             canvas.style.display = "none";
-            prizeBox.classList.remove("hidden");  // Prize box dikhane ke liye
-            downloadBtn.style.display = "block";  // Download button dikhane ke liye
+            prizeBox.classList.remove("hidden");
+            downloadBtn.style.display = "block";
 
-            // Redirect after 2 seconds
             setTimeout(() => {
-                window.location.href = "https://rushbyhike.app.link/SxtZ7wQEwQb"; // 
+                window.location.href = "https://rushbyhike.app.link/SxtZ7wQEwQb"; //
             }, 2000);
         }
     }

@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
             downloadBtn.style.display = "block";  // 🚀 Show Download Button
             
             setTimeout(() => {
-                window.location.href = "https://rushbyhike.app.link/SxtZ7wQEwQb"; // 👈 Apni website ka link dalen
+                window.location.href = "https://rushbyhike.app.link/SxtZ7wQEwQb"; // 
             }, 2000);
         }
     }

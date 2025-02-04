@@ -9,18 +9,15 @@
 <body>
 
     <div class="container">
-        <h1>Reward-box</h1>
+        <h1>Reward-box 💰</h1>
         <h2>Scratch & Win</h2>
         <p>Scratch & Get Your Prize</p>
 
-        <!-- Scratch Area -->
-        <div class="scratch-container">
+        <div id="scratch-card">
             <canvas id="scratchCanvas"></canvas>
-            <div id="prizeBox" class="hidden">
-                <h3>Install & Claim</h3>
-                <h1>₹ 10,000*</h1>
-                <p>Big Bonus</p>
-                <button id="downloadBtn">DOWNLOAD NOW</button>
+            <div id="hidden-content">
+                <img src="prize.png" alt="Prize">
+                <button id="download-btn">DOWNLOAD NOW</button>
             </div>
         </div>
 
@@ -29,6 +26,5 @@
     </div>
 
     <script src="script.js"></script>
-
 </body>
 </html>

@@ -9,25 +9,26 @@
 <body>
 
     <div class="container">
-        <h1 class="logo">Reward-box <span>💰</span></h1>
-        <h2 class="scratch-title">Scratch & Win</h2>
-        <p class="subtext">Scratch & Get Your Prize</p>
+        <h1>Reward-box</h1>
+        <h2>Scratch & Win</h2>
+        <p>Scratch & Get Your Prize</p>
 
-        <div class="scratch-card">
+        <!-- Scratch Area -->
+        <div class="scratch-container">
             <canvas id="scratchCanvas"></canvas>
-            <div class="prize" id="prizeBox">
-                <p>Install & Claim</p>
-                <h2>₹ 10,000*</h2>
-                <p class="bonus-text">Big Bonus</p>
-                <p class="partners">Payment Partners: <span class="verified">✔ Verified</span></p>
+            <div id="prizeBox" class="hidden">
+                <h3>Install & Claim</h3>
+                <h1>₹ 10,000*</h1>
+                <p>Big Bonus</p>
+                <button id="downloadBtn">DOWNLOAD NOW</button>
             </div>
         </div>
 
-        <button id="downloadBtn" style="display: none;">DOWNLOAD NOW</button>
-        <p class="surprise-text">🎁 Scratch for a surprise!</p>
-        <p class="tickets-left">Only <span>10</span> Tickets Left</p>
+        <p>🎁 Scratch for a surprise!</p>
+        <p class="remaining-tickets">Only 10 Tickets Left</p>
     </div>
 
     <script src="script.js"></script>
+
 </body>
 </html>

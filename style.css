@@ -7,18 +7,18 @@ body {
     padding: 0;
 }
 
-/* Scratch container (Main Box) */
+/* Scratch container (Main Box - Yeh vertical hoga) */
 #scratchContainer {
     position: relative;
     width: 100%;
-    max-width: 350px;  /* Yeh adjust karein */
-    height: 500px;  /* Scratch area ko vertical banane ke liye */
+    max-width: 350px;  /* Yeh adjust karein agar aur chhota ya bada chahiye */
+    height: 600px;  /* Vertical size ke liye */
     margin: 20px auto;
     text-align: center;
     overflow: hidden;
-    background-color: #ccc; /* Default background */
-    border-radius: 10px; /* Thoda rounded look */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    background-color: #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Scratch canvas (Jis area ko scratch karenge) */
@@ -28,7 +28,7 @@ body {
     display: block;
     cursor: pointer;
     background-color: gray;
-    border-radius: 10px; /* Canvas bhi rounded ho */
+    border-radius: 10px;
 }
 
 /* Hidden class (Jo cheezein scratch hone ke baad dikhengi) */

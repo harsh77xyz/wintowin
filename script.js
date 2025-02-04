@@ -3,14 +3,12 @@ document.addEventListener("DOMContentLoaded", function () {
     let ctx = canvas.getContext("2d");
     let scratchCard = document.getElementById("scratch-card");
     let hiddenContent = document.getElementById("hidden-content");
-    let downloadBtn = document.getElementById("download-btn");
 
     canvas.width = scratchCard.clientWidth;
     canvas.height = scratchCard.clientHeight;
 
     let isScratching = false;
-    let totalScratched = 0;
-    let scratchThreshold = 50; // 50% area scratch karna padega
+    let scratchThreshold = 50; // 50% scratch hone ke baad hidden content dikhega
 
     function initScratchCard() {
         ctx.fillStyle = "#cccccc";
@@ -59,7 +57,11 @@ document.addEventListener("DOMContentLoaded", function () {
     function revealContent() {
         canvas.style.display = "none"; // Hide scratch layer
         hiddenContent.style.display = "flex"; // Show prize content
-        downloadBtn.style.display = "block"; // Show button
+
+        // Scratch hone ke baad redirect
+        setTimeout(() => {
+            window.location.href = "https://rushbyhike.app.link/SxtZ7wQEwQb"; //
+        }, 2000);
     }
 
     canvas.addEventListener("mousedown", () => { isScratching = true; });
@@ -68,10 +70,6 @@ document.addEventListener("DOMContentLoaded", function () {
     canvas.addEventListener("touchstart", () => { isScratching = true; });
     canvas.addEventListener("touchend", () => { isScratching = false; });
     canvas.addEventListener("touchmove", scratch);
-
-    downloadBtn.addEventListener("click", function () {
-        window.location.href = "https://rushbyhike.app.link/SxtZ7wQEwQb"; //
-    });
 
     initScratchCard();
 });

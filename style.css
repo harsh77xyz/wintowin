@@ -23,17 +23,16 @@ h2 {
 }
 
 #scratch-card {
-    width: 100%;
-    max-width: 320px;
-    height: 280px;
+    width: 300px;
+    height: 200px;
     position: relative;
     margin: auto;
     border-radius: 10px;
     overflow: hidden;
-    background: #ddd; /* Default background */
+    background: #ddd;
 }
 
-canvas {
+#scratchCanvas {
     position: absolute;
     top: 0;
     left: 0;
@@ -41,25 +40,29 @@ canvas {
     height: 100%;
 }
 
-.hidden-content {
+#hidden-content {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
+    flex-direction: column;
+    font-size: 20px;
     font-weight: bold;
-    color: #000;
     background: white;
     border-radius: 10px;
 }
 
-.download-btn {
-    display: none; /* Scratch hone ke baad show hoga */
-    margin-top: 15px;
+#hidden-content img {
+    width: 80%;
+    margin-bottom: 10px;
+}
+
+#download-btn {
+    display: none;
     padding: 10px 20px;
     background: #4a90e2;
     color: white;
@@ -69,6 +72,6 @@ canvas {
     font-size: 16px;
 }
 
-.download-btn:hover {
+#download-btn:hover {
     background: #357ae8;
 }

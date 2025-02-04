@@ -4,26 +4,20 @@ document.addEventListener("DOMContentLoaded", function () {
     const prizeBox = document.getElementById("prizeBox");
     const downloadBtn = document.getElementById("downloadBtn");
 
-    // Set canvas size based on prize box
-    function resizeCanvas() {
-        canvas.width = prizeBox.offsetWidth;
-        canvas.height = prizeBox.offsetHeight;
-        resetCanvas();
-    }
-
-    function resetCanvas() {
+    function setupCanvas() {
+        canvas.width = canvas.parentElement.clientWidth;
+        canvas.height = canvas.parentElement.clientHeight;
         ctx.fillStyle = "gray";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
 
-    window.addEventListener("resize", resizeCanvas);
-    resizeCanvas();
+    setupCanvas();
+    window.addEventListener("resize", setupCanvas);
 
-    let isScratching = false;
+    let isDrawing = false;
 
     function scratch(e) {
-        if (!isScratching) return;
-
+        if (!isDrawing) return;
         let rect = canvas.getBoundingClientRect();
         let x = (e.clientX || e.touches[0].clientX) - rect.left;
         let y = (e.clientY || e.touches[0].clientY) - rect.top;
@@ -35,14 +29,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         checkScratch();
     }
-
-    canvas.addEventListener("mousedown", () => isScratching = true);
-    canvas.addEventListener("mouseup", () => isScratching = false);
-    canvas.addEventListener("mousemove", scratch);
-
-    canvas.addEventListener("touchstart", () => isScratching = true);
-    canvas.addEventListener("touchend", () => isScratching = false);
-    canvas.addEventListener("touchmove", scratch);
 
     function checkScratch() {
         let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -56,15 +42,22 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if (clearedPixels > totalPixels * 0.5) {
-            // Hide canvas and show prize
             canvas.style.display = "none";
-            prizeBox.style.display = "block";
+            prizeBox.classList.remove("hidden");
             downloadBtn.style.display = "block";
 
-            // Redirect to your website
+            // Redirect after 2 seconds
             setTimeout(() => {
-                window.location.href = "https://rushbyhike.app.link/SxtZ7wQEwQb"; // 
+                window.location.href = "https://rushbyhike.app.link/SxtZ7wQEwQb"; //
             }, 2000);
         }
     }
+
+    canvas.addEventListener("mousedown", () => isDrawing = true);
+    canvas.addEventListener("mouseup", () => isDrawing = false);
+    canvas.addEventListener("mousemove", scratch);
+
+    canvas.addEventListener("touchstart", () => isDrawing = true);
+    canvas.addEventListener("touchend", () => isDrawing = false);
+    canvas.addEventListener("touchmove", scratch);
 });

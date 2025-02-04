@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const canvas = document.getElementById("scratchCanvas");
     const ctx = canvas.getContext("2d");
-    const prizeBox = document.querySelector(".prize");
+    const prizeBox = document.getElementById("prizeBox");
     const downloadBtn = document.getElementById("downloadBtn");
 
     canvas.width = prizeBox.clientWidth;
@@ -46,9 +46,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (clearedPixels > totalPixels * 0.5) {
             canvas.style.display = "none";
+            prizeBox.style.display = "block";  // 🚀 Show ₹10,000 & Claim
+            downloadBtn.style.display = "block";  // 🚀 Show Download Button
+            
             setTimeout(() => {
-                window.location.href = "https://rushbyhike.app.link/SxtZ7wQEwQb"; // 👈 Yahan apni website ka link add karein
-            }, 1000);
+                window.location.href = "https://rushbyhike.app.link/SxtZ7wQEwQb"; // 👈 Apni website ka link dalen
+            }, 2000);
         }
     }
 

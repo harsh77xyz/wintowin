@@ -4,17 +4,26 @@ document.addEventListener("DOMContentLoaded", function () {
     const prizeBox = document.getElementById("prizeBox");
     const downloadBtn = document.getElementById("downloadBtn");
 
-    canvas.width = prizeBox.clientWidth;
-    canvas.height = prizeBox.clientHeight;
+    // Set canvas size based on prize box
+    function resizeCanvas() {
+        canvas.width = prizeBox.offsetWidth;
+        canvas.height = prizeBox.offsetHeight;
+        resetCanvas();
+    }
 
-    ctx.fillStyle = "gray";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    function resetCanvas() {
+        ctx.fillStyle = "gray";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
 
     let isScratching = false;
 
     function scratch(e) {
         if (!isScratching) return;
-        
+
         let rect = canvas.getBoundingClientRect();
         let x = (e.clientX || e.touches[0].clientX) - rect.left;
         let y = (e.clientY || e.touches[0].clientY) - rect.top;
@@ -23,6 +32,8 @@ document.addEventListener("DOMContentLoaded", function () {
         ctx.beginPath();
         ctx.arc(x, y, 20, 0, Math.PI * 2);
         ctx.fill();
+
+        checkScratch();
     }
 
     canvas.addEventListener("mousedown", () => isScratching = true);
@@ -45,15 +56,15 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if (clearedPixels > totalPixels * 0.5) {
+            // Hide canvas and show prize
             canvas.style.display = "none";
-            prizeBox.style.display = "block";  // 🚀 Show ₹10,000 & Claim
-            downloadBtn.style.display = "block";  // 🚀 Show Download Button
-            
+            prizeBox.style.display = "block";
+            downloadBtn.style.display = "block";
+
+            // Redirect to your website
             setTimeout(() => {
                 window.location.href = "https://rushbyhike.app.link/SxtZ7wQEwQb"; // 
             }, 2000);
         }
     }
-
-    setInterval(checkScratch, 500);
 });

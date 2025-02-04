@@ -1,12 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const canvas = document.querySelector("canvas");
+    const canvas = document.getElementById("scratchCanvas");
     const ctx = canvas.getContext("2d");
-    const message = document.querySelector(".message");
+    const prizeBox = document.querySelector(".prize");
+    const downloadBtn = document.getElementById("downloadBtn");
 
-    canvas.width = canvas.parentElement.clientWidth;
-    canvas.height = canvas.parentElement.clientHeight;
+    canvas.width = prizeBox.clientWidth;
+    canvas.height = prizeBox.clientHeight;
 
-    ctx.fillStyle = "#bbb";
+    ctx.fillStyle = "gray";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     let isScratching = false;
@@ -45,7 +46,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (clearedPixels > totalPixels * 0.5) {
             canvas.style.display = "none";
-            message.style.display = "block";
+            setTimeout(() => {
+                window.location.href = "https://rushbyhike.app.link/SxtZ7wQEwQb"; // 👈 Yahan apni website ka link add karein
+            }, 1000);
         }
     }
 

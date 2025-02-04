@@ -2,6 +2,8 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
     background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
@@ -59,19 +61,4 @@ h2 {
 #hidden-content img {
     width: 80%;
     margin-bottom: 10px;
-}
-
-#download-btn {
-    display: none;
-    padding: 10px 20px;
-    background: #4a90e2;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-#download-btn:hover {
-    background: #357ae8;
 }

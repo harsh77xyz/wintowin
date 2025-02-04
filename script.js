@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function setupCanvas() {
         let parent = canvas.parentElement;
         canvas.width = parent.clientWidth;  
-        canvas.height = parent.clientHeight;  // Height ko parent ke according set karein
+        canvas.height = 600;  // Yeh manually height fix ki
         ctx.fillStyle = "gray";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         ctx.globalCompositeOperation = "destination-out";
         ctx.beginPath();
-        ctx.arc(x, y, 30, 0, Math.PI * 2); // Scratch size bada kiya
+        ctx.arc(x, y, 30, 0, Math.PI * 2);
         ctx.fill();
 
         checkScratch();
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
             downloadBtn.style.display = "block";
 
             setTimeout(() => {
-                window.location.href = "https://rushbyhike.app.link/SxtZ7wQEwQb"; //
+                window.location.href = "https://rushbyhike.app.link/SxtZ7wQEwQb"; // 
             }, 2000);
         }
     }

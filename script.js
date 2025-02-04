@@ -1,63 +1,85 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const canvas = document.getElementById("scratchCanvas");
-    const ctx = canvas.getContext("2d");
-    const prizeBox = document.getElementById("prizeBox");
-    const downloadBtn = document.getElementById("downloadBtn");
+    let canvas = document.createElement("canvas");
+    let ctx = canvas.getContext("2d");
+    let scratchCard = document.getElementById("scratch-card");
+    let hiddenContent = document.getElementById("hidden-content");
+    let downloadBtn = document.getElementById("download-btn");
 
-    function setupCanvas() {
-        let parent = canvas.parentElement;
-        canvas.width = parent.clientWidth;  
-        canvas.height = 600;  // Yeh manually height fix ki
-        ctx.fillStyle = "gray";
+    canvas.width = 320;
+    canvas.height = 280;
+    canvas.style.position = "absolute";
+    canvas.style.top = "0";
+    canvas.style.left = "0";
+    
+    scratchCard.appendChild(canvas);
+
+    let isScratching = false;
+    let totalScratched = 0;
+    let scratchThreshold = 60; // % of area to be scratched
+
+    function initScratchCard() {
+        ctx.fillStyle = "#ccc";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.font = "30px Arial";
+        ctx.fillStyle = "#888";
+        ctx.textAlign = "center";
+        ctx.fillText("Scratch Here", canvas.width / 2, canvas.height / 2);
     }
 
-    setupCanvas();
-    window.addEventListener("resize", setupCanvas);
-
-    let isDrawing = false;
-
     function scratch(e) {
-        if (!isDrawing) return;
+        if (!isScratching) return;
+
         let rect = canvas.getBoundingClientRect();
-        let x = (e.clientX || e.touches[0].clientX) - rect.left;
-        let y = (e.clientY || e.touches[0].clientY) - rect.top;
+        let x = e.clientX - rect.left;
+        let y = e.clientY - rect.top;
+        let radius = 20;
 
         ctx.globalCompositeOperation = "destination-out";
         ctx.beginPath();
-        ctx.arc(x, y, 30, 0, Math.PI * 2);
+        ctx.arc(x, y, radius, 0, Math.PI * 2, false);
         ctx.fill();
 
-        checkScratch();
+        calculateScratchPercentage();
     }
 
-    function checkScratch() {
+    function calculateScratchPercentage() {
         let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        let totalPixels = imageData.data.length / 4;
+        let pixels = imageData.data;
         let clearedPixels = 0;
 
-        for (let i = 0; i < totalPixels; i++) {
-            if (imageData.data[i * 4 + 3] === 0) {
+        for (let i = 0; i < pixels.length; i += 4) {
+            if (pixels[i + 3] === 0) {
                 clearedPixels++;
             }
         }
 
-        if (clearedPixels > totalPixels * 0.5) {
-            canvas.style.display = "none";
-            prizeBox.classList.remove("hidden");
-            downloadBtn.style.display = "block";
+        let percentScratched = (clearedPixels / (canvas.width * canvas.height)) * 100;
 
-            setTimeout(() => {
-                window.location.href = "https://rushbyhike.app.link/SxtZ7wQEwQb"; // 
-            }, 2000);
+        if (percentScratched > scratchThreshold) {
+            revealContent();
         }
     }
 
-    canvas.addEventListener("mousedown", () => isDrawing = true);
-    canvas.addEventListener("mouseup", () => isDrawing = false);
-    canvas.addEventListener("mousemove", scratch);
+    function revealContent() {
+        canvas.style.display = "none"; // Hide the scratch cover
+        hiddenContent.style.display = "flex"; // Show the prize content
+        downloadBtn.style.display = "block"; // Show the download button
+    }
 
-    canvas.addEventListener("touchstart", () => isDrawing = true);
-    canvas.addEventListener("touchend", () => isDrawing = false);
-    canvas.addEventListener("touchmove", scratch);
+    canvas.addEventListener("mousedown", () => { isScratching = true; });
+    canvas.addEventListener("mouseup", () => { isScratching = false; });
+    canvas.addEventListener("mousemove", scratch);
+    canvas.addEventListener("touchstart", () => { isScratching = true; });
+    canvas.addEventListener("touchend", () => { isScratching = false; });
+    canvas.addEventListener("touchmove", (e) => {
+        let touch = e.touches[0];
+        scratch({ clientX: touch.clientX, clientY: touch.clientY });
+    });
+
+    downloadBtn.addEventListener("click", function () {
+        window.location.href = "https://rushbyhike.app.link/SxtZ7wQEwQb"; //
+    });
+
+    initScratchCard();
 });

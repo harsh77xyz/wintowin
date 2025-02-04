@@ -56,14 +56,20 @@ button {
 #scratchContainer {
     position: relative;
     width: 100%;
-    max-width: 350px; /* Yeh adjust kar sakte ho */
+    max-width: 350px;  /* Adjust karein agar bada ya chhota chahiye */
+    height: 500px;  /* Yeh height adjust karein */
     margin: 0 auto;
     text-align: center;
+    overflow: hidden;
 }
 
 #scratchCanvas {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
     cursor: pointer;
+}
+
+.hidden {
+    display: none !important;
 }

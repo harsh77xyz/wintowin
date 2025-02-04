@@ -58,7 +58,13 @@ h2 {
     border-radius: 10px;
 }
 
-#hidden-content img {
-    width: 80%;
-    margin-bottom: 10px;
+.amount {
+    font-size: 30px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.bonus {
+    font-size: 18px;
+    color: #28a745;
 }

@@ -53,6 +53,7 @@ body {
     padding-top: 30px;
     font-size: 18px;
     color: #000;
+    display: none; /* 🚀 Initially hidden */
 }
 
 .prize h2 {
@@ -96,6 +97,7 @@ button {
     font-weight: bold;
     border-radius: 5px;
     cursor: pointer;
+    display: none; /* 🚀 Initially hidden */
 }
 
 .surprise-text {
